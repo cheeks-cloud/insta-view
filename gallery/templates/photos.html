@@ -2,14 +2,11 @@
 {% block content %}
 
 <div class="container two">
-  <p> see </p>
+  <p class="text-center"> see </p>
   <div class="row">
   {% for image in images %}
     <div class="image col-lg-6 col-md-12 mb-4 mb-lg-0 position-relative">
         <img src="{{ image.image.url }}" class="w-100 shadow-1-strong rounded mb-4 img-fluid image" alt="{{ image.name }}"/>    
-    </div>
-    <div class="alert alert-warning text-center" role="alert">
-      Oops, seems there are no images   
     </div>
   {% endfor %}
   </div>

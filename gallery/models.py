@@ -6,7 +6,7 @@ class Profile(models.Model):
 
 
   def __str__(self):
-      return self.photo
+      return self.bio
 
 class Image(models.Model):
   image = models.ImageField(null=False, blank=False, upload_to='images/')
@@ -28,7 +28,7 @@ class Image(models.Model):
 
 
   def __str__(self):
-      return self.image
+      return self.name
 
 
 
