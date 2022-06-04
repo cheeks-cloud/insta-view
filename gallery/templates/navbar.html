@@ -10,11 +10,14 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{%url 'new-image'%}">Post</a>
         </li>
       
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="{% url 'login' %}"> Login </a>
         </li>
       </ul>
       <form class="d-flex">
@@ -30,7 +33,10 @@
                   </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="{%url ''%}">Home</a>
+                <a href="{%url 'photos'%}">Home</a>
+              </li>
+              <li>
+                <a href="{%url 'new-image'%}">Add Image</a>
               </li>
               <li>
                 <a href="/accounts/password/change">Change Password</a>
@@ -43,9 +49,11 @@
         </ul>
         {% else %}
         <li>
-          <a class='btn btn-default' href="/accounts/login">Login</a>
+          <button>
+            see
+          </button>
+          <a class='btn btn-default' href="{% url 'login' %}">Login</a>
         </li>
-
         {% endif %}
       </div>
     </div>

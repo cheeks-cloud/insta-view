@@ -1,12 +1,10 @@
-{%extends 'base.html'%}
+{%extends 'django_registration/base.html'%}
 {%load bootstrap4%}
 
 {%block content%}
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4"></div>
-
         <div class="col-md-4">
             {%if form.errors%}
             <p>
@@ -22,7 +20,9 @@
                 <div class="panel-body">
                     <form action="/accounts/login/" method="post">
                         {%csrf_token%}
-                        {{form|bootstrap}}
+                        {% for field in form %}
+                            {% bootstrap_field field %}
+                        {% endfor %}
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary btn-sm" value="Login">
                         </div>
@@ -31,8 +31,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4"></div>
 
     </div>
 

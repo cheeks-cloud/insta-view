@@ -1,9 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Profile(models.Model):
   photo = models.ImageField(null=False, blank=False, upload_to='images')
   bio = models.TextField(null=False, blank=False)
-
 
   def __str__(self):
       return self.bio
