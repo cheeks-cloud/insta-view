@@ -25,7 +25,11 @@ class Image(models.Model):
 
   def update_captions(self):
     Image.objects.filter(caption = self.caption).update(caption = self.caption)
-
+  
+  @classmethod
+  def search_by_name(cls, name):
+    image = cls.objects.filter(cls,name)
+    return image
 
   def __str__(self):
       return self.name

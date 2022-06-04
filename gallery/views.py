@@ -19,6 +19,7 @@ def login(request):
 
 @login_required(login_url='/accounts/login/')
 def new_photo(request):
+
   current_user = request.user
   if request.method == 'POST':
     form = ImageForm(request.POST,request.FILES)
@@ -30,3 +31,16 @@ def new_photo(request):
   else:
     form = ImageForm()
   return render(request, 'new_image.html',{"form": form})
+
+
+def search_results(request):
+   if 'image' in request.GET and request.GET["image"]:
+        search_term = request.GET.get("image")
+        searched_images = Image.search_by_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"articles": searched_images})
+
+   else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
