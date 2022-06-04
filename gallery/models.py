@@ -1,8 +1,8 @@
 from django.db import models
 
-# class Profile(models.Model):
-#   photo = models.ImageField(null=False, blank=False, upload_to='images')
-#   bio = models.TextField(null=False, blank=False)
+class Profile(models.Model):
+  photo = models.ImageField(null=False, blank=False, upload_to='images')
+  bio = models.TextField(null=False, blank=False)
 
 
 # class Image(models.Model):
