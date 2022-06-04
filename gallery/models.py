@@ -24,10 +24,10 @@ class Image(models.Model):
      Image.objects.get(id = self.id).delete()
 
   def update_captions(self):
+    Image.objects.filter(caption = self.caption).update(caption = self.caption)
 
 
-
-   def __str__(self):
+  def __str__(self):
       return self.image
 
 
