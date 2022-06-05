@@ -1,6 +1,20 @@
-{%extends 'base.html'%}
+{%extends 'django_registration/base.html'%}
 {% block content %}
 
 <p> Hello  </p>
+
+<div class="one">
+  <h1 class="text-center"> Welcome To Instagram </h1>
+</div>
+<div class="container two">
+  <p class="text-center"> see </p>
+  <div class="row">
+  {% for image in images %}
+    <div class="image col-lg-6 col-md-12 mb-4 mb-lg-0 position-relative">
+        <img src="{{ image.image.url }}" class="w-100 shadow-1-strong rounded mb-4 img-fluid image" alt="{{ image.name }}"/>    
+    </div>
+  {% endfor %}
+  </div>
+</div>
 
 {% endblock content %}

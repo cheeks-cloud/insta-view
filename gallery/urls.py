@@ -8,7 +8,8 @@ urlpatterns= [
     path('add/',views.new_photo,name = 'new-image'),
     path('login/',views.login_request,name = 'login'),
     path('search/',views.search_results,name = 'search'),
-    path('register/',views.register_request,name = 'register')
+    path('register/',views.register_request,name = 'register'),
+    path('logout/', views.logout_request, name= 'logout'),
 ]
 
 if settings.DEBUG:

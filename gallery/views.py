@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Image,Profile
 from django.contrib.auth.decorators import login_required
 from .forms import ImageForm,NewUserForm
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
@@ -21,7 +21,7 @@ def register_request(request):
           user = form.save()
           login(request, user)
           messages.success(request, "Registration successful." )
-        return redirect('photos.html')
+        return redirect('/login/')
   messages.error(request, "Unsuccessful registration. Invalid information.")
   form = NewUserForm()
   return render (request=request, template_name="registration_form.html", context={"register_form":form})
@@ -37,7 +37,7 @@ def login_request(request):
           if user is not None:
             login(request, user)
             messages.info(request, f"You are now logged in as {username}.")
-            return redirect("profile.html")
+            return redirect('')
           else:
             messages.error(request,"Invalid username or password.")
       else:
@@ -45,6 +45,13 @@ def login_request(request):
   form = AuthenticationForm()
   return render(request=request, template_name="django_registration/login.html", context={"login_form":form})
   
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.") 
+    return redirect("main:homepage")
+
+
 
 @login_required(login_url='/accounts/login/')
 def new_photo(request):
@@ -68,7 +75,7 @@ def search_results(request):
         searched_images = Image.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"articles": searched_images})
+        return render(request, 'search.html',{"message":message,"images": searched_images})
 
    else:
         message = "You haven't searched for any term"

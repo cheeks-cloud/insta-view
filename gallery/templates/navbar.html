@@ -7,17 +7,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{%url 'photos'%}">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'register'%}">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{%url 'new-image'%}">Post</a>
-        </li>
-      
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}"> Login </a>
         </li>
       </ul>
       <form class="d-flex" role="search" action="{% url 'search' %}" >
@@ -36,22 +32,13 @@
                 <a href="{%url 'photos'%}">Home</a>
               </li>
               <li>
-                <a href="{%url 'new-image'%}">Add Image</a>
-              </li>
-              <li>
-                <a href="/accounts/password/change">Change Password</a>
-              </li>
-              <li>
-                <a href="/logout">Logout</a>
+                <a href="/logout/">Logout</a>
               </li>
             </ul>
           </li>
         </ul>
         {% else %}
         <li>
-          <button>
-            see
-          </button>
           <a class='btn btn-default' href="{% url 'login' %}">Login</a>
         </li>
         {% endif %}
