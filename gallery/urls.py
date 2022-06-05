@@ -4,7 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns= [
-    path('',views.photos,name = 'photos'),
+    path('',views.welcome,name ='welcome'),
+    path('photos/',views.photos,name = 'photos'),
     path('add/',views.new_photo,name = 'new-image'),
     path('login/',views.login_request,name = 'login'),
     path('search/',views.search_results,name = 'search'),

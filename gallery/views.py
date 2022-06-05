@@ -6,9 +6,9 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
-# def welcome(request):
+def welcome(request):
  
-#   return render( request, "index.html")
+  return render( request, "index.html")
 
 def photos(request):
   images = Image.objects.all()
@@ -37,7 +37,7 @@ def login_request(request):
           if user is not None:
             login(request, user)
             messages.info(request, f"You are now logged in as {username}.")
-            return redirect('')
+            return redirect('/photos/')
           else:
             messages.error(request,"Invalid username or password.")
       else:
@@ -49,20 +49,17 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.") 
-    return redirect("main:homepage")
-
+    return redirect("index.html")
 
 
 @login_required(login_url='/accounts/login/')
 def new_photo(request):
-
-  current_user = request.user
   if request.method == 'POST':
     form = ImageForm(request.POST,request.FILES)
     if form.is_valid():
       image = form.save(commit=False)
       image.save()
-    return redirect('profile.html')
+    return redirect('/photos/')
 
   else:
     form = ImageForm()
