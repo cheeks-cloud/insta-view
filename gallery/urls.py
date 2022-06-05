@@ -6,8 +6,9 @@ from django.conf.urls.static import static
 urlpatterns= [
     path('',views.photos,name = 'photos'),
     path('add/',views.new_photo,name = 'new-image'),
-    path('login/',views.login,name = 'login'),
-    path('search/',views.search_results,name = 'search')
+    path('login/',views.login_request,name = 'login'),
+    path('search/',views.search_results,name = 'search'),
+    path('register/',views.register_request,name = 'register')
 ]
 
 if settings.DEBUG:
