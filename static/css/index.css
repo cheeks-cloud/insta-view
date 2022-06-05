@@ -1,20 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 
 *{
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Pacifico', cursive;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
   scroll-behavior: smooth;
+}
+body{
+  background-image: url('https://cdn.wallpapersafari.com/55/73/ghY4rc.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
 
 .one{
-  margin-top:5%;
-  color:green;
+  margin-top:16%;
+  color:wheat;
 }
 .three{
   background-color:green;
   padding: 20px;
-  margin-left: 50px;
+  display: flex;
+  justify-content:center;
+  margin: 40px;
 }
+

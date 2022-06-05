@@ -49,10 +49,10 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "You have successfully logged out.") 
-    return redirect("index.html")
+    return render( request, "index.html")
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/login/')
 def new_photo(request):
   if request.method == 'POST':
     form = ImageForm(request.POST,request.FILES)

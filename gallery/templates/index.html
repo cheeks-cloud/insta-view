@@ -1,12 +1,15 @@
 {%extends 'django_registration/base.html'%}
 {% block content %}
+<div class="content">
+  
 
-<p> Hello  </p>
+  <div class="one">
+    <h1 class="text-center"> Hello  </h1>
+    <h2 class="text-center"> Welcome To Instagram </h2>
+  </div>
+  <div>
+    <a class="btn btn-success three" href="{% url 'register'%}" role="button"> Click to Register</a>
 
-<div class="one">
-  <h1 class="text-center"> Welcome To Instagram </h1>
+  </div>
 </div>
-
-<a class="btn btn-success three" href="{% url 'register'%}" role="button"> Click to Register</a>
-
 {% endblock content %}
