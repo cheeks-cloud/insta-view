@@ -78,8 +78,8 @@ def new_photo(request):
    return render(request, 'new_image.html',{"form": form})
 
 
-def see(request):
-    img = Image.objects.all().first()
+def see(request,id):
+    img = Image.objects.get(id=id)
     context={
       'imgs':img
     }
