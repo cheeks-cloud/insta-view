@@ -1,6 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render,redirect
-from .models import Image,Profile
+from .models import Image,Profile,Comments,Likes
 from django.contrib.auth.decorators import login_required
 from .forms import ImageForm,NewUserForm
 from django.contrib.auth import login,authenticate,logout
@@ -14,6 +14,15 @@ def welcome(request):
 def photos(request):
   images = Image.objects.all()
   return render( request, "photos.html", {'images': images})
+
+def likes(request):
+  likes = Likes.objects.all()
+  return render( request, "likes.html", {'likes':likes})
+def comments(request):
+
+  comments = Comments.objects.all()
+
+  return render( request, "comments.html", {'comments': comments})
 
 def register_request(request):
   if request.method == "POST":
@@ -55,24 +64,27 @@ def logout_request(request):
 
 @login_required(login_url='/login/')
 def new_photo(request):
-  if request.method == 'POST':
-    current_user = request.user
-    form = ImageForm(request.POST,request.FILES)
-    if form.is_valid():
-      form.save(commit=False)
-      form.profile = current_user
-    return redirect('/photos/')
+   current_user = request.user
+   if request.method == 'POST':
+     form = ImageForm(request.POST,request.FILES)
+     if form.is_valid():
+       image = form.save()
+       image.profile = current_user
+       image.save_image()
+     return redirect('/photos/')
 
-  else:
+   else:
     form = ImageForm()
-  return render(request, 'new_image.html',{"form": form})
+   return render(request, 'new_image.html',{"form": form})
 
-def see(request,image_id):
-  try:
-    image = Image.objects.get(id = image_id)
-  except Exception:
-    raise Http404()
-  return render( request, "profile.html",{'image':image})
+
+def see(request):
+    img = Image.objects.all().first()
+    context={
+      'imgs':img
+    }
+    
+    return render( request, "profile.html",context)
 
 def search_results(request):
    if 'image' in request.GET and request.GET["image"]:

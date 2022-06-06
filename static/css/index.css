@@ -10,10 +10,12 @@
 body{
   background-image: url('https://cdn.wallpapersafari.com/55/73/ghY4rc.jpg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: cover;
 
 }
-
+ .see a:link{
+  color: #fff;
+}
 .one{
   margin-top:16%;
   color:wheat;
@@ -25,4 +27,5 @@ body{
   justify-content:center;
   margin: 40px;
 }
+
 

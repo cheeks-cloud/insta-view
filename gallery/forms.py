@@ -20,8 +20,12 @@ class NewUserForm(UserCreationForm):
             
 class ImageForm(forms.ModelForm):
       class Meta:
-            model = Image
-            fields = ('image','name' ,'caption' ,'comments' ,'likes' )
+        model = Image
+        exclude = ['profile','post_on']
+image = forms.ImageField()
+name = forms.CharField(max_length=40)
+caption = forms.CharField()
+         
 
 						
            

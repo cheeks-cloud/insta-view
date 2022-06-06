@@ -62,9 +62,9 @@ WSGI_APPLICATION = 'insta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'newgalleria',
+        'NAME': 'galleriview',
         'USER': 'moringa',
-        'PASSWORD':'Cheeks2',
+        'PASSWORD':'CheeksZ',
     }
 }
 
