@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render,redirect
 from .models import Image,Profile
 from django.contrib.auth.decorators import login_required
@@ -55,16 +56,23 @@ def logout_request(request):
 @login_required(login_url='/login/')
 def new_photo(request):
   if request.method == 'POST':
+    current_user = request.user
     form = ImageForm(request.POST,request.FILES)
     if form.is_valid():
-      image = form.save(commit=False)
-      image.save()
+      form.save(commit=False)
+      form.profile = current_user
     return redirect('/photos/')
 
   else:
     form = ImageForm()
   return render(request, 'new_image.html',{"form": form})
 
+def see(request,image_id):
+  try:
+    image = Image.objects.get(id = image_id)
+  except Exception:
+    raise Http404()
+  return render( request, "profile.html",{'image':image})
 
 def search_results(request):
    if 'image' in request.GET and request.GET["image"]:
@@ -72,7 +80,7 @@ def search_results(request):
         searched_images = Image.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"images": searched_images})
+        return render(request, 'search.html',{"message":message,"image": searched_images})
 
    else:
         message = "You haven't searched for any term"

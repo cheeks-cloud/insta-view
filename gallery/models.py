@@ -27,8 +27,8 @@ class Image(models.Model):
     Image.objects.filter(caption = self.caption).update(caption = self.caption)
   
   @classmethod
-  def search_by_name(cls, name):
-    image = cls.objects.filter(cls,name)
+  def search_by_name(cls, search_term):
+    image = cls.objects.filter(cls,image_name_icontains = search_term)
     return image
 
   def __str__(self):

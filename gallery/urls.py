@@ -11,6 +11,7 @@ urlpatterns= [
     path('search/',views.search_results,name = 'search'),
     path('register/',views.register_request,name = 'register'),
     path('logout/', views.logout_request, name= 'logout'),
+    path('see/',views.see,name='see')
 ]
 
 if settings.DEBUG:
